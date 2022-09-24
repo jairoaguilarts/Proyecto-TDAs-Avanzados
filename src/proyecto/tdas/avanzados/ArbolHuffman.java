@@ -85,13 +85,16 @@ public class ArbolHuffman implements Serializable{
             int frecuencia = 100000, minimaFrecuencia1 = -1, minimaFrecuencia2 = -1;
             for(int i = 0; i < nodos.size(); i++) { //Nodo con menor frecuencia 1
                 if(nodos.get(i).getFrecuencia() < frecuencia) {
+                    frecuencia = nodos.get(i).getFrecuencia();
                     minimaFrecuencia1 = i;
                 }
             }
             n1 = nodos.get(minimaFrecuencia1);
             nodos.remove(minimaFrecuencia1);
+            frecuencia = 100000;
             for(int i = 0; i < nodos.size(); i++) { //Nodo con menor frecuencia 2
                 if(nodos.get(i).getFrecuencia() < frecuencia) {
+                    frecuencia = nodos.get(i).getFrecuencia();
                     minimaFrecuencia2 = i;
                 }
             }
