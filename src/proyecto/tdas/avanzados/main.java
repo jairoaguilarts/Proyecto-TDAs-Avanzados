@@ -2,7 +2,7 @@ package proyecto.tdas.avanzados;
 
 import java.util.Scanner;
 
-public class ProyectoTDAsAvanzados {
+public class main {
 
     static Scanner sc = new Scanner(System.in);
     
@@ -17,7 +17,7 @@ public class ProyectoTDAsAvanzados {
                             case 1 -> { //Codificador
                                 break;
                             }
-                            case 2 -> { //Deccodificador
+                            case 2 -> { //Decodificador
                                 break;
                             }
                             default -> {
@@ -32,13 +32,13 @@ public class ProyectoTDAsAvanzados {
                     int opcionGrafos = menuGrafos();
                     while(opcionGrafos != 4) {
                         switch(opcionGrafos) {
-                            case 1 -> {
+                            case 1 -> { //Leer grafo de archivo
                                 break;
                             }
-                            case 2 -> {
+                            case 2 -> { //Prim
                                 break;
                             }
-                            case 3 -> {
+                            case 3 -> { //Floyd
                                 break;
                             }
                             default -> {
