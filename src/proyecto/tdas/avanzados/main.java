@@ -12,11 +12,11 @@ public class main {
         while(opcionPrincipal != 3) {
             switch(opcionPrincipal) {
                 case 1 -> {
-                    ArbolHuffman arbol = new ArbolHuffman();
                     int opcionArboles = menuArboles();
                     while(opcionArboles != 3) {
                         switch(opcionArboles){
                             case 1 -> { //Codificador
+                                ArbolHuffman arbol = new ArbolHuffman();
                                 System.out.println("Ingrese el nombre del Archivo de texto: ");
                                 String archivo = sc.next(), texto = "";
                                 //Lee archivo
@@ -26,30 +26,56 @@ public class main {
                                     while((bfRead = bf.readLine()) != null) {
                                         texto += bfRead;
                                     }
-                                } catch (IOException e) {}
-                                String codigo = arbol.codificarTexto(texto);
-                                //Crea y escribe archivos
-                                File textoCodificado = new File("./Archivos Codificados/codigo" + archivo + ".txt");
-                                try {
+                                
+                                    String codigo = arbol.codificarTexto(texto);
+                                    //Crea y escribe archivo
+                                    File textoCodificado = new File("./Archivos Codificados/codigo" + archivo + ".txt");
                                     FileWriter fw = new FileWriter(textoCodificado);
                                     BufferedWriter bw = new BufferedWriter(fw);
-                                    bw.write("Codigo");
+                                    bw.write(codigo);
                                     bw.flush();
                                     fw.close();
                                     bw.close();
-                                } catch (IOException e) {}
+                                    System.out.println("Codigo de Huffman del archivo: " + archivo);
+                                    System.out.println("Almacenado en: " + textoCodificado.getAbsolutePath());
+
+                                    //Crea archivo binario
+                                    File binario = new File("./Arboles/" + archivo + ".hm");
+                                    FileOutputStream fos = new FileOutputStream(binario);
+                                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                                    oos.writeObject(arbol);
+                                    oos.close();
+                                    fos.close();
+                                } catch (IOException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                }
                                 break;
                             }
                             case 2 -> { //Decodificador
                                 System.out.println("Ingrese el nombre del archivo codificado: ");
                                 String archivo = sc.next(), codigo = "";
+                                System.out.println("Ingrese el nombre del archivo con el arbol: ");
+                                String archivoArbol = sc.next();
                                 try {
+                                    //Lee el archivo con el codigo
                                     BufferedReader bf = new BufferedReader(new FileReader("./Archivos Codificados/" + archivo + ".txt"));
                                     String bfRead; 
                                     while((bfRead = bf.readLine()) != null) {
                                         codigo += bfRead;
                                     }
-                                } catch (IOException e) {}
+                                    //Lee el archivo con el arbol
+                                    File arbolAlmacenado = new File("./Arboles/" + archivoArbol + ".hm");
+                                    FileInputStream fis = new FileInputStream(arbolAlmacenado);
+                                    ObjectInputStream ois;
+                                    while(fis.available()>0) {
+                                        ois = new ObjectInputStream(fis);
+                                        ArbolHuffman arbol = (ArbolHuffman)ois.readObject();
+                                        String texto = arbol.decodificar(codigo);
+                                        System.out.println("Texto decodificado: " + texto);
+                                    }
+                                } catch (IOException | ClassNotFoundException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                }
                                 break;
                             }
                             default -> {

@@ -1,8 +1,9 @@
 package proyecto.tdas.avanzados;
 
 import java.util.LinkedList;
+import java.io.*;
 
-public class ArbolHuffman {
+public class ArbolHuffman implements Serializable{
     
     private boolean banderaHoja = false;
     
@@ -32,6 +33,23 @@ public class ArbolHuffman {
             }
         }
         return codigo;
+    }
+    
+    public String decodificar(String codigo) {
+        String texto = "";
+        NodoHuffman temp = raiz;
+        for(int i = 0; i < codigo.length(); i++) {
+            if(codigo.charAt(i) == '0') {
+                temp = temp.getIzquierdo();
+            } else {
+                temp = temp.getDerecho();
+            }
+            if(temp.esHoja()) {
+                texto += temp.getCaracter();
+                temp = raiz;
+            }
+        }
+        return texto;
     }
     
     private void obtenerCaracteres(String texto) {
