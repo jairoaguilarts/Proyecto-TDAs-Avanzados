@@ -19,8 +19,8 @@ public class main {
                                 ArbolHuffman arbol = new ArbolHuffman();
                                 System.out.println("Ingrese el nombre del Archivo de texto: ");
                                 String archivo = sc.next(), texto = "";
-                                //Lee archivo
                                 try {
+                                    //Lee archivo
                                     BufferedReader bf = new BufferedReader(new FileReader("./Textos/" + archivo + ".txt"));
                                     String bfRead; 
                                     while((bfRead = bf.readLine()) != null) {
@@ -28,6 +28,15 @@ public class main {
                                     }
                                 
                                     String codigo = arbol.codificarTexto(texto);
+                                    
+                                    //Crea archivo binario
+                                    File binario = new File("./Arboles/" + archivo + ".hm");
+                                    FileOutputStream fos = new FileOutputStream(binario);
+                                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                                    oos.writeObject(arbol);
+                                    oos.close();
+                                    fos.close();
+                                    
                                     //Crea y escribe archivo
                                     File textoCodificado = new File("./Archivos Codificados/codigo" + archivo + ".txt");
                                     FileWriter fw = new FileWriter(textoCodificado);
@@ -38,16 +47,9 @@ public class main {
                                     bw.close();
                                     System.out.println("Codigo de Huffman del archivo: " + archivo);
                                     System.out.println("Almacenado en: " + textoCodificado.getAbsolutePath());
-
-                                    //Crea archivo binario
-                                    File binario = new File("./Arboles/" + archivo + ".hm");
-                                    FileOutputStream fos = new FileOutputStream(binario);
-                                    ObjectOutputStream oos = new ObjectOutputStream(fos);
-                                    oos.writeObject(arbol);
-                                    oos.close();
-                                    fos.close();
                                 } catch (IOException e) {
                                     System.out.println("Error: " + e.getMessage());
+                                    e.printStackTrace();
                                 }
                                 break;
                             }
@@ -75,6 +77,7 @@ public class main {
                                     }
                                 } catch (IOException | ClassNotFoundException e) {
                                     System.out.println("Error: " + e.getMessage());
+                                    e.printStackTrace();
                                 }
                                 break;
                             }

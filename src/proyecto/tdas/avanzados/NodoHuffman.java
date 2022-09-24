@@ -1,6 +1,8 @@
 package proyecto.tdas.avanzados;
 
-public class NodoHuffman {
+import java.io.*;
+
+public class NodoHuffman implements Serializable {
     
     private final char caracter;
     private final int frecuencia;

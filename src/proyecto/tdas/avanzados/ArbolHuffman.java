@@ -22,7 +22,7 @@ public class ArbolHuffman implements Serializable{
         crearNodos();
         unirNodos();
         raiz = nodos.get(0);
-        //falta calcular codigos
+        calcularCodigos();
         //Codifica el texto
         for(int i = 0; i < texto.length(); i++) {
             char caracter = texto.charAt(i);
@@ -106,9 +106,9 @@ public class ArbolHuffman implements Serializable{
     private void calcularCodigos() { //revisar
         String codigo = "";
         for(int i = 0; i < caracteresDiferentes.size(); i++) {
-            String cod = calcularCodigo(raiz.getIzquierdo(), true, codigo);
-            
-            
+            String codigoA = calcularCodigo(raiz, true, codigo);
+            System.out.println(codigoA);
+            codigoHuffman.add(codigoA);
         }
         
     }
