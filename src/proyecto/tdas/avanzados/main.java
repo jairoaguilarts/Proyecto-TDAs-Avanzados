@@ -1,6 +1,7 @@
 package proyecto.tdas.avanzados;
 
 import java.util.Scanner;
+import java.io.*;
 
 public class main {
 
@@ -15,9 +16,39 @@ public class main {
                     while(opcionArboles != 3) {
                         switch(opcionArboles){
                             case 1 -> { //Codificador
+                                System.out.println("Ingrese el nombre del Archivo de texto: ");
+                                String archivo = sc.next(), texto = "";
+                                //Lee archivo
+                                try {
+                                    BufferedReader bf = new BufferedReader(new FileReader("./Textos/" + archivo + ".txt"));
+                                    String bfRead; 
+                                    while((bfRead = bf.readLine()) != null) {
+                                        texto += bfRead;
+                                    }
+                                } catch (IOException e) {}
+                                System.out.println("Texto en el archivo: " + texto);
+                                //Crea y escribe archivos
+                                File textoCodificado = new File("./Archivos Codificados/codigo" + archivo + ".txt");
+                                try {
+                                    FileWriter fw = new FileWriter(textoCodificado);
+                                    BufferedWriter bw = new BufferedWriter(fw);
+                                    bw.write("Codigo");
+                                    bw.flush();
+                                    fw.close();
+                                    bw.close();
+                                } catch (IOException e) {}
                                 break;
                             }
                             case 2 -> { //Decodificador
+                                System.out.println("Ingrese el nombre del archivo codificado: ");
+                                String archivo = sc.next(), codigo = "";
+                                try {
+                                    BufferedReader bf = new BufferedReader(new FileReader("./Archivos Codificados/" + archivo + ".txt"));
+                                    String bfRead; 
+                                    while((bfRead = bf.readLine()) != null) {
+                                        codigo += bfRead;
+                                    }
+                                } catch (IOException e) {}
                                 break;
                             }
                             default -> {
