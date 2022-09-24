@@ -6,19 +6,32 @@ public class ArbolHuffman {
     
     private boolean banderaHoja = false;
     
-    private final NodoHuffman raiz;
+    private NodoHuffman raiz = null;
     private final LinkedList caracteresDiferentes = new LinkedList();
     private final LinkedList frecuenciaCaracteres = new LinkedList();
     private final LinkedList<String> codigoHuffman = new LinkedList();
     private final LinkedList<NodoHuffman> nodos = new LinkedList();
     
-    public ArbolHuffman(String texto) {
+    public ArbolHuffman() {}
+    
+    public String codificarTexto(String texto) {
+        String codigo = "";
         obtenerCaracteres(texto);
         contarCaracteres(texto);
         crearNodos();
         unirNodos();
         raiz = nodos.get(0);
-        calcularCodigos();
+        //falta calcular codigos
+        //Codifica el texto
+        for(int i = 0; i < texto.length(); i++) {
+            char caracter = texto.charAt(i);
+            for(int j = 0; j < caracteresDiferentes.size(); j++) {
+                if(caracter == (char)caracteresDiferentes.get(j)) {
+                    codigo += codigoHuffman.get(j);
+                }
+            }
+        }
+        return codigo;
     }
     
     private void obtenerCaracteres(String texto) {
@@ -72,7 +85,7 @@ public class ArbolHuffman {
         }
     }
     
-    private void calcularCodigos() {
+    private void calcularCodigos() { //revisar
         String codigo = "";
         for(int i = 0; i < caracteresDiferentes.size(); i++) {
             String cod = calcularCodigo(raiz.getIzquierdo(), true, codigo);
@@ -82,10 +95,10 @@ public class ArbolHuffman {
         
     }
     
-    private String calcularCodigo(NodoHuffman nodo, boolean izquierdo, String codigo) {
+    private String calcularCodigo(NodoHuffman nodo, boolean izquierdo, String codigo) { //revisar
         if(nodo.esHoja()) {
             banderaHoja = true;
-            return codigo;
+            return Character.toString(nodo.getCaracter());
         }
         if(!banderaHoja) {
             codigo += calcularCodigo(nodo.getIzquierdo(), true, codigo);

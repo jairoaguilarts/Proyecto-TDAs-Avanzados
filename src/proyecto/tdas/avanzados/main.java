@@ -12,6 +12,7 @@ public class main {
         while(opcionPrincipal != 3) {
             switch(opcionPrincipal) {
                 case 1 -> {
+                    ArbolHuffman arbol = new ArbolHuffman();
                     int opcionArboles = menuArboles();
                     while(opcionArboles != 3) {
                         switch(opcionArboles){
@@ -26,8 +27,7 @@ public class main {
                                         texto += bfRead;
                                     }
                                 } catch (IOException e) {}
-                                ArbolHuffman arbol = new ArbolHuffman(texto);
-                                
+                                String codigo = arbol.codificarTexto(texto);
                                 //Crea y escribe archivos
                                 File textoCodificado = new File("./Archivos Codificados/codigo" + archivo + ".txt");
                                 try {
