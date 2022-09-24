@@ -4,9 +4,12 @@ import java.util.LinkedList;
 
 public class ArbolHuffman {
     
-    private NodoHuffman raiz;
+    private boolean banderaHoja = false;
+    
+    private final NodoHuffman raiz;
     private final LinkedList caracteresDiferentes = new LinkedList();
     private final LinkedList frecuenciaCaracteres = new LinkedList();
+    private final LinkedList<String> codigoHuffman = new LinkedList();
     private final LinkedList<NodoHuffman> nodos = new LinkedList();
     
     public ArbolHuffman(String texto) {
@@ -15,6 +18,7 @@ public class ArbolHuffman {
         crearNodos();
         unirNodos();
         raiz = nodos.get(0);
+        calcularCodigos();
     }
     
     private void obtenerCaracteres(String texto) {
@@ -55,17 +59,51 @@ public class ArbolHuffman {
                 }
             }
             n1 = nodos.get(minimaFrecuencia1);
+            nodos.remove(minimaFrecuencia1);
             for(int i = 0; i < nodos.size(); i++) { //Nodo con menor frecuencia 2
                 if(nodos.get(i).getFrecuencia() < frecuencia) {
                     minimaFrecuencia2 = i;
                 }
             }
             n2 = nodos.get(minimaFrecuencia2);
-            nodos.remove(minimaFrecuencia1);
             nodos.remove(minimaFrecuencia2);
             NodoHuffman newNode = new NodoHuffman((n1.getFrecuencia() + n2.getFrecuencia()), n1, n2);
             nodos.add(newNode);
         }
+    }
+    
+    private void calcularCodigos() {
+        String codigo = "";
+        for(int i = 0; i < caracteresDiferentes.size(); i++) {
+            String cod = calcularCodigo(raiz.getIzquierdo(), true, codigo);
+            
+            
+        }
+        
+    }
+    
+    private String calcularCodigo(NodoHuffman nodo, boolean izquierdo, String codigo) {
+        if(nodo.esHoja()) {
+            banderaHoja = true;
+            return codigo;
+        }
+        if(!banderaHoja) {
+            codigo += calcularCodigo(nodo.getIzquierdo(), true, codigo);
+        }
+        if(!banderaHoja) {
+            codigo += calcularCodigo(nodo.getDerecho(), false, codigo);
+        }
+        if(izquierdo) {
+            return "0";
+        } else {
+            return "1";
+        }
+    }
+    
+    private String invertirCodigo(String codigo) {
+        StringBuilder sb = new StringBuilder(codigo);
+        String inverso = sb.reverse().toString();
+        return inverso;
     }
     
 }

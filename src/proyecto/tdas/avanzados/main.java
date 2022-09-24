@@ -26,7 +26,8 @@ public class main {
                                         texto += bfRead;
                                     }
                                 } catch (IOException e) {}
-                                System.out.println("Texto en el archivo: " + texto);
+                                ArbolHuffman arbol = new ArbolHuffman(texto);
+                                
                                 //Crea y escribe archivos
                                 File textoCodificado = new File("./Archivos Codificados/codigo" + archivo + ".txt");
                                 try {
