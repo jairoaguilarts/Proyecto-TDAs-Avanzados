@@ -8,8 +8,8 @@ public class ArbolHuffman implements Serializable{
     private boolean banderaHoja = false;
     
     private NodoHuffman raiz = null;
-    private final LinkedList caracteresDiferentes = new LinkedList();
-    private final LinkedList frecuenciaCaracteres = new LinkedList();
+    private final LinkedList<Character> caracteresDiferentes = new LinkedList();
+    private final LinkedList<Integer> frecuenciaCaracteres = new LinkedList();
     private final LinkedList<String> codigoHuffman = new LinkedList();
     private final LinkedList<NodoHuffman> nodos = new LinkedList();
     
@@ -53,10 +53,9 @@ public class ArbolHuffman implements Serializable{
     }
     
     private void obtenerCaracteres(String texto) {
-        int listIndex = 0;
         for(int i = 0; i < texto.length(); i++) {
             if(!caracteresDiferentes.contains(texto.charAt(i))) {
-                caracteresDiferentes.add(listIndex++, texto.charAt(i));
+                caracteresDiferentes.add(texto.charAt(i));
             }
         }
     }
@@ -69,14 +68,14 @@ public class ArbolHuffman implements Serializable{
                 if(caracter == texto.charAt(j))
                     contador++;
             }
-            frecuenciaCaracteres.add(i, contador);
+            frecuenciaCaracteres.add(contador);
         }
     }
     
     private void crearNodos() {
         for(int i = 0; i < caracteresDiferentes.size(); i++) {
             NodoHuffman nodo = new NodoHuffman((char)caracteresDiferentes.get(i), (int)frecuenciaCaracteres.get(i));
-            nodos.add(i, nodo);
+            nodos.add(nodo);
         }
     }
     
@@ -103,38 +102,44 @@ public class ArbolHuffman implements Serializable{
         }
     }
     
-    private void calcularCodigos() { //revisar
-        String codigo = "";
+    private void calcularCodigos() { 
         for(int i = 0; i < caracteresDiferentes.size(); i++) {
-            String codigoA = calcularCodigo(raiz, true, codigo);
-            System.out.println(codigoA);
-            codigoHuffman.add(codigoA);
-        }
-        
-    }
-    
-    private String calcularCodigo(NodoHuffman nodo, boolean izquierdo, String codigo) { //revisar
-        if(nodo.esHoja()) {
-            banderaHoja = true;
-            return Character.toString(nodo.getCaracter());
-        }
-        if(!banderaHoja) {
-            codigo += calcularCodigo(nodo.getIzquierdo(), true, codigo);
-        }
-        if(!banderaHoja) {
-            codigo += calcularCodigo(nodo.getDerecho(), false, codigo);
-        }
-        if(izquierdo) {
-            return "0";
-        } else {
-            return "1";
+            String codigoCaracter = calcularCodigo(caracteresDiferentes.get(i));
+            System.out.println(codigoCaracter);
+            codigoHuffman.add(codigoCaracter);
         }
     }
     
-    private String invertirCodigo(String codigo) {
-        StringBuilder sb = new StringBuilder(codigo);
-        String inverso = sb.reverse().toString();
-        return inverso;
+    private String calcularCodigo(char caracter) { 
+        String codigo = "";
+        NodoHuffman temp = raiz;
+        boolean revisoIzquierda = false, revisoDerecha = false;
+        while(true) {
+            if(temp.esHoja()) {
+                if(temp.getCaracter() == caracter) {
+                    System.out.println(temp.getCaracter());
+                    return codigo;
+                } else {
+                    codigo = "";
+                    temp = raiz;
+                }
+            } else { 
+                if(!revisoIzquierda) {
+                    temp.getIzquierdo();
+                    codigo += "0";
+                    revisoIzquierda = true;
+                } else {
+                    revisoIzquierda = false;
+                }
+                if(!revisoDerecha) {
+                    temp = temp.getDerecho();
+                    codigo += "1";
+                    revisoDerecha = true;
+                } else {
+                    revisoDerecha = false;
+                }
+            } 
+        }
     }
     
 }
