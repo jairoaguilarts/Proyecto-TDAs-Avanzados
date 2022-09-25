@@ -22,7 +22,7 @@ public class main {
                                 String archivo = sc.next(), texto = "";
                                 try {
                                     //Lee archivo
-                                    BufferedReader bf = new BufferedReader(new FileReader("./Textos/" + archivo + ".txt"));
+                                    BufferedReader bf = new BufferedReader(new FileReader("./Carpeta Arboles/Textos/" + archivo + ".txt"));
                                     String bfRead; 
                                     while((bfRead = bf.readLine()) != null) {
                                         texto += bfRead;
@@ -30,7 +30,7 @@ public class main {
                                     String codigo = arbol.codificar(texto);
                                     
                                     //Crea archivo binario
-                                    File binario = new File("./Arboles/" + archivo + ".hm");
+                                    File binario = new File("./Carpeta Arboles/Arboles/" + archivo + ".hm");
                                     FileOutputStream fos = new FileOutputStream(binario);
                                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                                     oos.writeObject(arbol);
@@ -38,7 +38,7 @@ public class main {
                                     fos.close();
                                     
                                     //Crea y escribe archivo
-                                    File textoCodificado = new File("./Archivos Codificados/codigoHM" + archivo + ".txt");
+                                    File textoCodificado = new File("./Carpeta Arboles/Archivos Codificados/codigoHM" + archivo + ".txt");
                                     FileWriter fw = new FileWriter(textoCodificado);
                                     BufferedWriter bw = new BufferedWriter(fw);
                                     bw.write(codigo);
@@ -61,13 +61,13 @@ public class main {
                                 String archivoArbol = sc.next();
                                 try {
                                     //Lee el archivo con el codigo
-                                    BufferedReader bf = new BufferedReader(new FileReader("./Archivos Codificados/" + archivo + ".txt"));
+                                    BufferedReader bf = new BufferedReader(new FileReader("./Carpeta Arboles/Archivos Codificados/" + archivo + ".txt"));
                                     String bfRead; 
                                     while((bfRead = bf.readLine()) != null) {
                                         codigo += bfRead;
                                     }
                                     //Lee el archivo con el arbol
-                                    File arbolAlmacenado = new File("./Arboles/" + archivoArbol + ".hm");
+                                    File arbolAlmacenado = new File("./Carpeta Arboles/Arboles/" + archivoArbol + ".hm");
                                     FileInputStream fis = new FileInputStream(arbolAlmacenado);
                                     ObjectInputStream ois;
                                     while(fis.available() > 0) {
