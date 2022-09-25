@@ -71,11 +71,8 @@ public class main {
                                     ObjectInputStream ois;
                                     while(fis.available()>0) {
                                         ois = new ObjectInputStream(fis);
-
-                                        
-                                        System.out.println("Texto decodificado: ");
                                     }
-                                } catch (IOException | ClassNotFoundException e) {
+                                } catch (IOException e) {
                                     System.out.println("Error: " + e.getMessage());
                                     e.printStackTrace();
                                 }
