@@ -12,11 +12,12 @@ public class main {
         while(opcionPrincipal != 3) {
             switch(opcionPrincipal) {
                 case 1 -> {
+                    ArbolHuffman arbol = null;
                     int opcionArboles = menuArboles();
                     while(opcionArboles != 3) {
                         switch(opcionArboles){
                             case 1 -> { //Codificador
-                                ArbolHuffman arbol = new ArbolHuffman();
+                                arbol = new ArbolHuffman();
                                 System.out.println("Ingrese el nombre del Archivo de texto: ");
                                 String archivo = sc.next(), texto = "";
                                 try {
@@ -26,7 +27,6 @@ public class main {
                                     while((bfRead = bf.readLine()) != null) {
                                         texto += bfRead;
                                     }
-                                
                                     String codigo = arbol.codificar(texto);
                                     
                                     //Crea archivo binario
@@ -69,10 +69,13 @@ public class main {
                                     File arbolAlmacenado = new File("./Arboles/" + archivoArbol + ".hm");
                                     FileInputStream fis = new FileInputStream(arbolAlmacenado);
                                     ObjectInputStream ois;
-                                    while(fis.available()>0) {
+                                    while(fis.available() > 0) {
                                         ois = new ObjectInputStream(fis);
+                                        arbol = (ArbolHuffman)ois.readObject();
                                     }
-                                } catch (IOException e) {
+                                    String texto = arbol.decodificar(codigo);
+                                    System.out.println("Mensaje obtenido: " + texto);
+                                } catch (IOException | ClassNotFoundException e) {
                                     System.out.println("Error: " + e.getMessage());
                                     e.printStackTrace();
                                 }

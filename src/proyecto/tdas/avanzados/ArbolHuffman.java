@@ -61,10 +61,32 @@ public class ArbolHuffman extends TDAArbolBinario {
         for(int i = 0; i < caracteresDiferentes.size(); i++) { //Agrega las rutas de cada caracter
             codigosHuffman.add(i, calcularRuta(raiz, caracteresDiferentes.get(i), ""));
         }
-        for(int i = 0; i < caracteresDiferentes.size(); i++) {
-            System.out.println("Codigo para " + caracteresDiferentes.get(i) + ": " + codigosHuffman.get(i));
+        for(int i = 0; i < texto.length(); i++) {
+            char caracter = texto.charAt(i);
+            for(int j = 0; j < caracteresDiferentes.size(); i++) {
+                if(caracteresDiferentes.get(j) == caracter) {
+                    codigo += codigosHuffman.get(j);
+                }
+            }
         }
         return codigo;
+    }
+    
+    public String decodificar(String codigo) {
+        String texto = "";
+         Nodo temp = raiz;
+         for(int i = 0; i < codigo.length(); i++) {
+             if(codigo.charAt(i) == '0') {
+                 temp = temp.getIzquierdo();
+             } else {
+                 temp = temp.getDerecho();
+             }
+             if(temp.esHoja()) {
+                 texto += temp.getCaracter();
+                 temp = raiz;
+             }
+         }
+         return texto;
     }
     
     private void codificarNodosHoja(Nodo raiz, String  codigo) {
