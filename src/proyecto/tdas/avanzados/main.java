@@ -16,7 +16,7 @@ public class main {
                     while(opcionArboles != 3) {
                         switch(opcionArboles){
                             case 1 -> { //Codificador
-                                ArbolHuffman arbol = new ArbolHuffman();
+                                
                                 System.out.println("Ingrese el nombre del Archivo de texto: ");
                                 String archivo = sc.next(), texto = "";
                                 try {
@@ -71,9 +71,9 @@ public class main {
                                     ObjectInputStream ois;
                                     while(fis.available()>0) {
                                         ois = new ObjectInputStream(fis);
-                                        ArbolHuffman arbol = (ArbolHuffman)ois.readObject();
-                                        String texto = arbol.decodificar(codigo);
-                                        System.out.println("Texto decodificado: " + texto);
+
+                                        
+                                        System.out.println("Texto decodificado: ");
                                     }
                                 } catch (IOException | ClassNotFoundException e) {
                                     System.out.println("Error: " + e.getMessage());
