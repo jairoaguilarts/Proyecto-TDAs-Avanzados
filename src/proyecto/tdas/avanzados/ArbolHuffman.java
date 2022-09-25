@@ -63,7 +63,7 @@ public class ArbolHuffman extends TDAArbolBinario {
         }
         for(int i = 0; i < texto.length(); i++) {
             char caracter = texto.charAt(i);
-            for(int j = 0; j < caracteresDiferentes.size(); i++) {
+            for(int j = 0; j < caracteresDiferentes.size();j++) {
                 if(caracteresDiferentes.get(j) == caracter) {
                     codigo += codigosHuffman.get(j);
                 }

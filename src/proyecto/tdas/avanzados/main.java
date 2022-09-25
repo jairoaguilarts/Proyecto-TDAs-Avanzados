@@ -38,15 +38,16 @@ public class main {
                                     fos.close();
                                     
                                     //Crea y escribe archivo
-                                    File textoCodificado = new File("./Archivos Codificados/codigo" + archivo + ".txt");
+                                    File textoCodificado = new File("./Archivos Codificados/codigoHM" + archivo + ".txt");
                                     FileWriter fw = new FileWriter(textoCodificado);
                                     BufferedWriter bw = new BufferedWriter(fw);
                                     bw.write(codigo);
                                     bw.flush();
                                     fw.close();
                                     bw.close();
-                                    System.out.println("Codigo de Huffman del archivo: " + archivo);
-                                    System.out.println("Almacenado en: " + textoCodificado.getAbsolutePath());
+                                    System.out.println("Codigo de Huffman del archivo: " + codigo);
+                                    System.out.println("Codigo almacenado en: " + textoCodificado.getAbsolutePath());
+                                    System.out.println("Arbol almacenado en: " + binario.getAbsolutePath());
                                 } catch (IOException e) {
                                     System.out.println("Error: " + e.getMessage());
                                     e.printStackTrace();
