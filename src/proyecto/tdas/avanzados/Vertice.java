@@ -2,17 +2,17 @@ package proyecto.tdas.avanzados;
 import java.io.*;
 import java.util.*;
 
-public class NodoGrafo {
+public class Vertice {
     private String etiqueta;
     private int valor;
     
     
-    public NodoGrafo(){
+    public Vertice(){
         etiqueta = null;
         valor = 0;
     }
     
-    public NodoGrafo(String etiqueta, int valor){
+    public Vertice(String etiqueta, int valor){
         this.etiqueta = etiqueta;
         this.valor = valor;
     }

@@ -2,15 +2,15 @@ package proyecto.tdas.avanzados;
 
 public class TDAGrafo {
     protected int size;
-    protected NodoGrafo matrizAdyacencia[][];
+    protected Vertice matrizAdyacencia[][];
     
     public TDAGrafo(){
         size = 0;
-        matrizAdyacencia = new NodoGrafo[0][0];
+        matrizAdyacencia = new Vertice[0][0];
     }
     public TDAGrafo(int size){
         this.size = size;
-        matrizAdyacencia = new NodoGrafo[size][size];
+        matrizAdyacencia = new Vertice[size][size];
     }
 
     public int getSize() {
@@ -21,11 +21,11 @@ public class TDAGrafo {
         this.size = size;
     }
 
-    public NodoGrafo[][] getMatrizAdyacencia() {
+    public Vertice[][] getMatrizAdyacencia() {
         return matrizAdyacencia;
     }
 
-    public void setMatrizAdyacencia(NodoGrafo[][] matrizAdyacencia) {
+    public void setMatrizAdyacencia(Vertice[][] matrizAdyacencia) {
         this.matrizAdyacencia = matrizAdyacencia;
     }
     
