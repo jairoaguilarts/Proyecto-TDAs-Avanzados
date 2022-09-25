@@ -16,7 +16,7 @@ public class main {
                     while(opcionArboles != 3) {
                         switch(opcionArboles){
                             case 1 -> { //Codificador
-                                
+                                ArbolHuffman arbol = new ArbolHuffman();
                                 System.out.println("Ingrese el nombre del Archivo de texto: ");
                                 String archivo = sc.next(), texto = "";
                                 try {
@@ -27,7 +27,7 @@ public class main {
                                         texto += bfRead;
                                     }
                                 
-                                    String codigo = arbol.codificarTexto(texto);
+                                    String codigo = arbol.codificar(texto);
                                     
                                     //Crea archivo binario
                                     File binario = new File("./Arboles/" + archivo + ".hm");

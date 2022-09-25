@@ -4,7 +4,7 @@ import java.io.*;
 
 public class TDAArbolBinario implements Serializable {
     
-    private Nodo raiz;
+    protected Nodo raiz;
     
     public TDAArbolBinario() {
         raiz = null;
