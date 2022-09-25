@@ -94,6 +94,20 @@ public class main {
                     while(opcionGrafos != 4) {
                         switch(opcionGrafos) {
                             case 1 -> { //Leer grafo de archivo
+                                System.out.println("Ingrese el nombre del archivo con el grafo: ");
+                                String archivo = sc.next(), texto ="";
+                                try {
+                                    //Lee archivo
+                                    BufferedReader bf = new BufferedReader(new FileReader("./CarpetaArboles/Textos/" + archivo + ".txt"));
+                                    String bfRead; 
+                                    while((bfRead = bf.readLine()) != null) {
+                                        texto += bfRead;
+                                    }
+                                    
+                                } catch (IOException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                    e.printStackTrace();
+                                }
                                 break;
                             }
                             case 2 -> { //Prim
