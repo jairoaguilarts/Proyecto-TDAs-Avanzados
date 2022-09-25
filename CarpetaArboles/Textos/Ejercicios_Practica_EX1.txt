@@ -1,0 +1,33 @@
+Ejercicio 1: Conversión Numérica
+De decimal a binario
+Para hacer la conversión de decimal a binario, hay que ir dividiendo el número decimal entre dos y anotar en una columna a la derecha el resto (un 0 si el resultado de la división es par y un 1 si es impar).
+
+La lista de ceros y unos leídos de abajo a arriba es el resultado.
+
+Ejemplo: vamos a pasar a binario 7910
+79       1 (impar). Dividimos entre dos:
+39       1 (impar). Dividimos entre dos:
+19       1 (impar). Dividimos entre dos:
+9         1 (impar). Dividimos entre dos:
+4         0 (par). Dividimos entre dos:
+2         0 (par). Dividimos entre dos:
+1        1 (impar).
+Por tanto, 7910 = 1001111
+¿Qué TDA apoya mejor la implementación de este algoritmo? Muestre cómo utilizaría el TDA para implementar la solución.
+R:/ Se utilizaría una TDA Pila porque el último dato obtenido será el primero en aparecer y el primero el ultimo que aparecerá.
+Ejercicio 2: 
+Se necesita una función que recibe un string y un char y debe determinar si la cantidad de veces que aparece ese char es par o impar. ¿Qué TDA apoya mejor la implementación de esta función? Muestre cómo utilizaría el TDA para implementar la solución.
+R:/ Se utilizaría una TDA Lista, así se podría recorrer cada casilla y aumentar un contador cada vez que encuentre el char.
+Ejercicio 3: 
+Un palíndromo es una palabra u oración que se puede leer en ambos sentidos y dice lo mismo. Se necesita una función para determinar si un string es un palíndromo o no. ¿Qué TDA apoya mejor la implementación de esta función? Muestre cómo utilizaría el TDA para implementar la solución.
+R:/ Se podría utilizar una TDA Pila porque al descomponer cada char e insertarlo en la pila, al sacar los elementos los regresaría al revés. Ejemplo: sedes -> debajo de la pila quedaría la s; sobre la s la e y así sucesivamente, al momento de comparar los elementos saldrían de la pila desde el tope hasta la base.
+ 
+Ejercicio 4: 
+Un carwash necesita una aplicación para atender los clientes que llegan al edificio. Se toma el número de la placa del vehículo, se introduce en la aplicación y esta dice qué placa es la siguiente. ¿Qué TDA apoya mejor la implementación de esta aplicación y por qué?
+R:/ La mejor TDA a aplicar en este caso es la TDA Cola porque atendería a los clientes en el orden de llegada.
+Ejercicio 5: 
+Un restaurante necesita una aplicación para mostrar su menú a los clientes. ¿Qué TDA apoya mejor la implementación de esa funcionalidad y por qué?
+R:/ Aquí sería mejor utilizar una TDA Lista para mostrar el menú, porque no debe seguir un orden en específico.
+Ejercicio 6: 
+Un call center necesita una aplicación para que los clientes esperen mientras son atendidos. ¿Qué TDA apoya mejor la implementación de esa funcionalidad y por qué?
+R:/ Sería mejor utilizar una TDA Cola porque se atenderían las llamadas en el orden en el que ingresan a la planta del call center.
