@@ -1,5 +1,7 @@
 package proyecto.tdas.avanzados;
 
+import java.util.*;
+
 public class TDAGrafo {
     protected int size;
     protected Vertice matrizAdyacencia[][];
@@ -12,7 +14,15 @@ public class TDAGrafo {
         this.size = size;
         matrizAdyacencia = new Vertice[size][size];
     }
-
+    public void automatic_Fill(){ //Funcion para llenar los valores de la matriz de adyacencia
+        Random rndm = new Random();
+        for (int i = 0; i < size; i++) {
+            Vertice temp = new Vertice(rndm.nextInt(15) + 0);
+            for (int j = 0; j < size; j++) {
+                matrizAdyacencia[i][j] = temp;
+            }
+        }
+    }
     public int getSize() {
         return size;
     }
