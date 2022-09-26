@@ -1,12 +1,11 @@
 package proyecto.tdas.avanzados;
 
-//No se si Prim lleva matriz de costo :P
-
 import java.util.Arrays;
 
 public class GrafoPrim extends TDAGrafo{
+    
     //private int matrizCosto[][];
-    private int NaN = 1000000000;
+    private final int NaN = 1000000000;
     
     //se setea la diagonal a NaN
     public GrafoPrim() {

@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.*;
 
 public class Vertice {
+    
     private String etiqueta;
     private int valor;
     
