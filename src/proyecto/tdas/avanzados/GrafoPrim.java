@@ -8,7 +8,8 @@ public class GrafoPrim extends TDAGrafo{
     private final int NaN = 1000000000;
     
     //se setea la diagonal a NaN
-    public GrafoPrim() {
+    public GrafoPrim(int size) {
+        super(size);
         for(int i = 0; i < size; i++){
             for (int j = 0; j < size; j++) {
                 if(i == j){

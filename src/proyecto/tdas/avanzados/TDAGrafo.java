@@ -3,6 +3,7 @@ package proyecto.tdas.avanzados;
 import java.util.*;
 
 public class TDAGrafo {
+    
     protected int size;
     protected Vertice matrizAdyacencia[][];
     
