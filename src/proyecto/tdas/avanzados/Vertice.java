@@ -12,6 +12,11 @@ public class Vertice {
         valor = 0;
     }
     
+    public Vertice(int valor){
+        this.valor = valor;
+        this.etiqueta = null;
+    }
+    
     public Vertice(String etiqueta, int valor){
         this.etiqueta = etiqueta;
         this.valor = valor;
