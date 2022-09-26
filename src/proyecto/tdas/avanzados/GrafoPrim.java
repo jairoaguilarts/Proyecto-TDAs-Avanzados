@@ -9,7 +9,10 @@ public class GrafoPrim extends TDAGrafo{
     
     //se setea la diagonal a NaN
     public GrafoPrim(int size) {
-        super(size);
+        //super(size);
+        this.size = size;
+        matrizAdyacencia = new Vertice[size][size];
+        automatic_Fill();
         for(int i = 0; i < size; i++){
             for (int j = 0; j < size; j++) {
                 if(i == j){

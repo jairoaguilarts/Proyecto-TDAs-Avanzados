@@ -20,8 +20,8 @@ public class TDAGrafo {
     public void automatic_Fill() { //Funcion para llenar los valores de la matriz de adyacencia
         Random rndm = new Random();
         for (int i = 0; i < size; i++) {
-            Vertice temp = new Vertice(rndm.nextInt(15) + 0);
             for (int j = 0; j < size; j++) {
+                Vertice temp = new Vertice(rndm.nextInt(15) + 0);
                 matrizAdyacencia[i][j] = temp;
             }
         }
