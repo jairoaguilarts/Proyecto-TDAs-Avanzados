@@ -6,10 +6,10 @@ import java.util.Arrays;
 
 public class GrafoPrim extends TDAGrafo{
     //private int matrizCosto[][];
-    private int NaN = 9999;
+    private int NaN = 1000000000;
     
     //se setea la diagonal a NaN
-    public GrafoPrim(){
+    public GrafoPrim() {
         for(int i = 0; i < size; i++){
             for (int j = 0; j < size; j++) {
                 if(i == j){
@@ -20,7 +20,7 @@ public class GrafoPrim extends TDAGrafo{
     }
     
     //Algoritmo de Prim, calculo de valores, desde el origen a todo los puntos
-    public void algoritmoPrim(){
+    public void algoritmoPrim() {
         int costo_Menor[] = new int[size];
         int recorrido_Minimo[] = new int[size];
         int minimo, ref;

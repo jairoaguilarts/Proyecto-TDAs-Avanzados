@@ -6,15 +6,17 @@ public class TDAGrafo {
     protected int size;
     protected Vertice matrizAdyacencia[][];
     
-    public TDAGrafo(){
+    public TDAGrafo() {
         size = 0;
         matrizAdyacencia = new Vertice[0][0];
     }
-    public TDAGrafo(int size){
+    
+    public TDAGrafo(int size) {
         this.size = size;
         matrizAdyacencia = new Vertice[size][size];
     }
-    public void automatic_Fill(){ //Funcion para llenar los valores de la matriz de adyacencia
+    
+    public void automatic_Fill() { //Funcion para llenar los valores de la matriz de adyacencia
         Random rndm = new Random();
         for (int i = 0; i < size; i++) {
             Vertice temp = new Vertice(rndm.nextInt(15) + 0);
@@ -23,6 +25,7 @@ public class TDAGrafo {
             }
         }
     }
+    
     public int getSize() {
         return size;
     }
