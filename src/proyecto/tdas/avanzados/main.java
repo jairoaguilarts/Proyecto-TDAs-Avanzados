@@ -111,6 +111,9 @@ public class main {
                                 break;
                             }
                             case 2 -> { //Prim
+                                GrafoPrim prim = new GrafoPrim();
+                                prim.automatic_Fill();
+                                prim.algoritmoPrim();
                                 break;
                             }
                             case 3 -> { //Floyd
