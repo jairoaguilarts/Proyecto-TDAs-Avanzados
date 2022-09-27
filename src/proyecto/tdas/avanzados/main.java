@@ -90,8 +90,8 @@ public class main {
                     break;
                 }
                 case 2 -> {
-                    GrafoPrim grafoPrim = new GrafoPrim();
-                    int opcionGrafos = menuGrafos();
+                    Vertice matriz[][] = null;
+                    int opcionGrafos = menuGrafos(), size = 0;
                     while(opcionGrafos != 4) {
                         switch(opcionGrafos) {
                             case 1 -> { //Leer grafo de archivo
@@ -101,8 +101,7 @@ public class main {
                                     //Lee archivo
                                     BufferedReader bf = new BufferedReader(new FileReader("./Carpeta Grafos/" + archivo + ".txt"));
                                     String linea; 
-                                    int iteracion = 0, size = 0, fila = 0;
-                                    Vertice matriz[][] = null;
+                                    int iteracion = 0, fila = 0;
                                     while((linea = bf.readLine()) != null) {
                                         if(iteracion++ == 0) {
                                             size = Integer.parseInt(linea);
@@ -116,8 +115,7 @@ public class main {
                                             matriz[fila++] = arregloVertices;
                                         }
                                     }
-                                    grafoPrim.setMatrizAdyacencia(matriz);
-                                    grafoPrim.setSize(size);
+                                    System.out.println("Grafo cargado exitosamente");
                                 } catch (IOException e) {
                                     System.out.println("Error: " + e.getMessage());
                                     e.printStackTrace();
@@ -125,6 +123,9 @@ public class main {
                                 break;
                             }
                             case 2 -> { //Prim
+                                GrafoPrim grafoPrim = new GrafoPrim();
+                                grafoPrim.setMatrizAdyacencia(matriz);
+                                grafoPrim.setSize(size);
                                 grafoPrim.algoritmoPrim();
                                 break;
                             }
