@@ -7,6 +7,7 @@ public class main {
 
     static Scanner sc = new Scanner(System.in);
     
+    @SuppressWarnings("CallToPrintStackTrace")
     public static void main(String[] args) {
         int opcionPrincipal = menuPrincipal();
         while(opcionPrincipal != 3) {
@@ -94,6 +95,23 @@ public class main {
                     int opcionGrafos = menuGrafos(), size = 0;
                     while(opcionGrafos != 4) {
                         switch(opcionGrafos) {
+                            case 0 -> { //Muestra el grafo
+                                if(matriz != null) {
+                                    for (Vertice[] matriz1 : matriz) {
+                                        for (int j = 0; j < matriz.length; j++) {
+                                            if(matriz1[j].getValor() == 1000000000) {
+                                                System.out.print("NaN ");
+                                            } else {
+                                                System.out.print(matriz1[j].getValor() + " ");
+                                            }
+                                        }
+                                        System.out.println("");
+                                    }
+                                } else {
+                                    System.out.println("No se ha cargado ningun grafo");
+                                }
+                                break;
+                            }
                             case 1 -> { //Leer grafo de archivo
                                 System.out.println("Ingrese el nombre del archivo con el grafo: ");
                                 String archivo = sc.next();
@@ -170,6 +188,7 @@ public class main {
     
     private static int menuGrafos() {
         System.out.println("====MENU GRAFOS====");
+        System.out.println("0) Mostrar matriz del grafo");
         System.out.println("1) Leer grafo de un archivo");
         System.out.println("2) Prim");
         System.out.println("3) Floyd");

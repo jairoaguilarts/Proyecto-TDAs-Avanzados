@@ -1,15 +1,11 @@
 package proyecto.tdas.avanzados;
 
-import java.util.Arrays;
-
 public class GrafoPrim extends TDAGrafo{
     
-    //private int matrizCosto[][];
     private final int NaN = 1000000000;
     
-    //se setea la diagonal a NaN
+    //Se setea la diagonal a NaN
     public GrafoPrim() {
-        //super(size);
         matrizAdyacencia = new Vertice[size][size];
         automatic_Fill();
         for(int i = 0; i < size; i++){
