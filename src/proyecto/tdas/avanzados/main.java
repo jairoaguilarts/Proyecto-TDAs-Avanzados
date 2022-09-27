@@ -117,6 +117,7 @@ public class main {
                                         }
                                     }
                                     grafoPrim.setMatrizAdyacencia(matriz);
+                                    grafoPrim.setSize(size);
                                 } catch (IOException e) {
                                     System.out.println("Error: " + e.getMessage());
                                     e.printStackTrace();
