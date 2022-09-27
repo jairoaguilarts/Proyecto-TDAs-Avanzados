@@ -112,7 +112,7 @@ public class main {
                                             Vertice arregloVertices[] = new Vertice[size];
                                             for(int i = 0;i < arreglo.length; i++) {
                                                 arregloVertices[i] = new Vertice(Integer.parseInt(arreglo[i]));
-                                            }
+                                    }
                                             matriz[fila++] = arregloVertices;
                                         }
                                     }
