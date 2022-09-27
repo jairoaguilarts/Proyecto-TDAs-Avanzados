@@ -175,7 +175,12 @@ public class main {
         System.out.println("2) Algoritmos sobre Grafos");
         System.out.println("3) Salir");
         System.out.println("Ingrese su opcion: ");
-        int opcion = sc.nextInt();
+        char opc = sc.next().charAt(0);
+        while(!verificadorEntrada(opc)){
+            System.out.println("Ingrese una opcion correcta: ");
+            opc = sc.next().charAt(0);
+        }
+        int opcion = Character.getNumericValue(opc);
         return opcion;
     }
     
@@ -185,7 +190,12 @@ public class main {
         System.out.println("2) Decodificador de Huffman");
         System.out.println("3) Regresar al menu principal");
         System.out.println("Ingrese su opcion: ");
-        int opcion = sc.nextInt();
+        char opc = sc.next().charAt(0);
+        while(!verificadorEntrada(opc)){
+            System.out.println("Ingrese una opcion correcta: ");
+            opc = sc.next().charAt(0);
+        }
+        int opcion = Character.getNumericValue(opc);
         return opcion;
     }
     
@@ -197,8 +207,20 @@ public class main {
         System.out.println("3) Floyd");
         System.out.println("4) Regresar al menu principal");
         System.out.println("Ingrese una opcion: ");
-        int opcion = sc.nextInt();
+        char opc = sc.next().charAt(0);
+        while(!verificadorEntrada(opc)){
+            System.out.println("Ingrese una opcion correcta: ");
+            opc = sc.next().charAt(0);
+        }
+        int opcion = Character.getNumericValue(opc);
         return opcion;
+    }
+    
+    private static boolean verificadorEntrada(char c){
+        if(c >= 48 && c <= 57){
+            return true;
+        }
+        return false;
     }
     
 }
