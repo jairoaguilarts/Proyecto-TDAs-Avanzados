@@ -1,3 +1,4 @@
+
 package proyecto.tdas.avanzados;
 
 import java.util.Arrays;
@@ -32,7 +33,7 @@ public class GrafoPrim extends TDAGrafo{
         for (int i = 0; i < size - 1; i++) {
              //Busqueda del vertice mas corto
             int v = arista_mas_barata(costo_Menor, vertices_recorridos);   
-            System.out.println("Vertice: " + v);
+            //System.out.println("Vertice: " + v);
             vertices_recorridos[v] = true;  
             //Los valores de 'aristas' mas baratos ingresan al array de 'recorrido_minimo'
             for (int j = 0; j < size; j++) {
@@ -50,6 +51,5 @@ public class GrafoPrim extends TDAGrafo{
                     matrizAdyacencia[i][recorrido_Minimo[i]].getValor());
         }
     }
-    
     
 }

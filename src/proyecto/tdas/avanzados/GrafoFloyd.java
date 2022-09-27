@@ -54,14 +54,10 @@ public class GrafoFloyd extends TDAGrafo{
             }
             System.out.println();
         }
-        System.out.println("");
         System.out.println("Matriz Costo Minimo: ");
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
-                if(matrizCostos[i][j] == 0)
-                    System.out.print("NaN ");
-                else 
-                    System.out.print(matrizCostos[i][j] + " ");
+                System.out.print(matrizCostos[i][j] + " ");
             }
             System.out.println();
         }
