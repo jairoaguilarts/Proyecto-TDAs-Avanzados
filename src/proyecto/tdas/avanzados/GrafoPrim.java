@@ -1,3 +1,4 @@
+
 package proyecto.tdas.avanzados;
 
 import java.util.Arrays;
@@ -50,6 +51,5 @@ public class GrafoPrim extends TDAGrafo{
                     matrizAdyacencia[i][recorrido_Minimo[i]].getValor());
         }
     }
-    
     
 }
