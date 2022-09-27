@@ -90,7 +90,7 @@ public class main {
                     break;
                 }
                 case 2 -> {
-                    TDAGrafo grafo = new TDAGrafo();
+                    GrafoPrim grafoPrim = new GrafoPrim();
                     int opcionGrafos = menuGrafos();
                     while(opcionGrafos != 4) {
                         switch(opcionGrafos) {
@@ -116,7 +116,7 @@ public class main {
                                             matriz[fila++] = arregloVertices;
                                         }
                                     }
-                                    grafo.setMatrizAdyacencia(matriz);
+                                    grafoPrim.setMatrizAdyacencia(matriz);
                                 } catch (IOException e) {
                                     System.out.println("Error: " + e.getMessage());
                                     e.printStackTrace();
@@ -124,9 +124,7 @@ public class main {
                                 break;
                             }
                             case 2 -> { //Prim
-                                GrafoPrim prim = (GrafoPrim)grafo;
-                                //prim.automatic_Fill();
-                                prim.algoritmoPrim();
+                                grafoPrim.algoritmoPrim();
                                 break;
                             }
                             case 3 -> { //Floyd
