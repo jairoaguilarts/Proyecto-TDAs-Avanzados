@@ -22,7 +22,7 @@ public class main {
                                 String archivo = sc.next(), texto = "";
                                 try {
                                     //Lee archivo
-                                    BufferedReader bf = new BufferedReader(new FileReader("./CarpetaArboles/Textos/" + archivo + ".txt"));
+                                    BufferedReader bf = new BufferedReader(new FileReader("./Carpeta Arboles/Textos/" + archivo + ".txt"));
                                     String bfRead; 
                                     while((bfRead = bf.readLine()) != null) {
                                         texto += bfRead;
@@ -30,7 +30,7 @@ public class main {
                                     String codigo = arbol.codificar(texto);
                                     
                                     //Crea archivo binario
-                                    File binario = new File("./CarpetaArboles/Binarios/" + archivo + ".hm");
+                                    File binario = new File("./Carpeta Arboles/Binarios/" + archivo + ".hm");
                                     FileOutputStream fos = new FileOutputStream(binario);
                                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                                     oos.writeObject(arbol);
@@ -38,7 +38,7 @@ public class main {
                                     fos.close();
                                     
                                     //Crea y escribe archivo
-                                    File textoCodificado = new File("./CarpetaArboles/Archivos Codificados/codigoHM" + archivo + ".txt");
+                                    File textoCodificado = new File("./Carpeta Arboles/Archivos Codificados/codigoHM" + archivo + ".txt");
                                     FileWriter fw = new FileWriter(textoCodificado);
                                     BufferedWriter bw = new BufferedWriter(fw);
                                     bw.write(codigo);
@@ -60,13 +60,13 @@ public class main {
                                 String archivoArbol = sc.next();
                                 try {
                                     //Lee el archivo con el codigo
-                                    BufferedReader bf = new BufferedReader(new FileReader("./CarpetaArboles/Archivos Codificados/" + archivo + ".txt"));
+                                    BufferedReader bf = new BufferedReader(new FileReader("./Carpeta Arboles/Archivos Codificados/" + archivo + ".txt"));
                                     String bfRead; 
                                     while((bfRead = bf.readLine()) != null) {
                                         codigo += bfRead;
                                     }
                                     //Lee el archivo con el arbol
-                                    File arbolAlmacenado = new File("./CarpetaArboles/Binarios/" + archivoArbol + ".hm");
+                                    File arbolAlmacenado = new File("./Carpeta Arboles/Binarios/" + archivoArbol + ".hm");
                                     FileInputStream fis = new FileInputStream(arbolAlmacenado);
                                     ObjectInputStream ois;
                                     while(fis.available() > 0) {
@@ -90,20 +90,33 @@ public class main {
                     break;
                 }
                 case 2 -> {
+                    TDAGrafo grafo = new TDAGrafo();
                     int opcionGrafos = menuGrafos();
                     while(opcionGrafos != 4) {
                         switch(opcionGrafos) {
                             case 1 -> { //Leer grafo de archivo
                                 System.out.println("Ingrese el nombre del archivo con el grafo: ");
-                                String archivo = sc.next(), texto ="";
+                                String archivo = sc.next();
                                 try {
                                     //Lee archivo
-                                    BufferedReader bf = new BufferedReader(new FileReader("./CarpetaArboles/Textos/" + archivo + ".txt"));
-                                    String bfRead; 
-                                    while((bfRead = bf.readLine()) != null) {
-                                        texto += bfRead;
+                                    BufferedReader bf = new BufferedReader(new FileReader("./Carpeta Grafos/" + archivo + ".txt"));
+                                    String linea; 
+                                    int iteracion = 0, size = 0, fila = 0;
+                                    Vertice matriz[][] = null;
+                                    while((linea = bf.readLine()) != null) {
+                                        if(iteracion++ == 0) {
+                                            size = Integer.parseInt(linea);
+                                            matriz = new Vertice[size][size];
+                                        } else {
+                                            String arreglo[] = linea.split(" ");
+                                            Vertice arregloVertices[] = new Vertice[size];
+                                            for(int i = 0;i < arreglo.length; i++) {
+                                                arregloVertices[i] = new Vertice(Integer.parseInt(arreglo[i]));
+                                            }
+                                            matriz[fila++] = arregloVertices;
+                                        }
                                     }
-                                    
+                                    grafo.setMatrizAdyacencia(matriz);
                                 } catch (IOException e) {
                                     System.out.println("Error: " + e.getMessage());
                                     e.printStackTrace();
@@ -111,7 +124,7 @@ public class main {
                                 break;
                             }
                             case 2 -> { //Prim
-                                GrafoPrim prim = new GrafoPrim(5);
+                                GrafoPrim prim = (GrafoPrim)grafo;
                                 //prim.automatic_Fill();
                                 prim.algoritmoPrim();
                                 break;
