@@ -148,6 +148,9 @@ public class main {
                                 break;
                             }
                             case 3 -> { //Floyd
+                                GrafoFloyd grafofloyd = new GrafoFloyd(size);
+                                grafofloyd.setMatrizAdyacencia(matriz);
+                                grafofloyd.algoritmoFloyd();
                                 break;
                             }
                             default -> {

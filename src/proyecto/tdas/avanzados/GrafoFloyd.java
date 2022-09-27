@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto.tdas.avanzados;
 
 public class GrafoFloyd extends TDAGrafo{
@@ -11,7 +6,6 @@ public class GrafoFloyd extends TDAGrafo{
     private int matrizCostos[][];
     
     public GrafoFloyd(int size) {
-        //super(size);
         this.size = size;
         matrizAdyacencia = new Vertice[size][size];
         matrizCostos = new int[size][size];
@@ -20,6 +14,15 @@ public class GrafoFloyd extends TDAGrafo{
             for (int j = 0; j < size; j++) {
                 if(i == j){
                     matrizAdyacencia[i][j].setValor(NaN);
+                }
+            }
+        }
+    }
+    
+    public void llenarCostos(){
+        for(int i = 0; i < size; i++){
+            for (int j = 0; j < size; j++) {
+                if(i == j){
                     matrizCostos[i][j] = 0;
                 }
                 else{
@@ -30,6 +33,7 @@ public class GrafoFloyd extends TDAGrafo{
     }
     
     public void algoritmoFloyd(){
+        llenarCostos();
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
                 for(int k = 0; k < size; k++){
@@ -40,14 +44,17 @@ public class GrafoFloyd extends TDAGrafo{
             }
         }
         
-        System.out.println("Matriz Adyacencia");
+        System.out.println("Matriz Adyacencia: ");
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
-                System.out.print(matrizAdyacencia[i][j].getValor() + " ");
+                if(matrizAdyacencia[i][j].getValor() == NaN)
+                    System.out.print("NaN ");
+                else
+                    System.out.print(matrizAdyacencia[i][j].getValor() + " ");
             }
             System.out.println();
         }
-        System.out.println("Matriz Costo Minimo");
+        System.out.println("Matriz Costo Minimo: ");
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
                 System.out.print(matrizCostos[i][j] + " ");
