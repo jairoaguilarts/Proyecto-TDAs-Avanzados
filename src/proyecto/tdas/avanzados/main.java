@@ -90,33 +90,20 @@ public class main {
                     break;
                 }
                 case 2 -> {
-                    TDAGrafo grafo = new TDAGrafo();
                     int opcionGrafos = menuGrafos();
                     while(opcionGrafos != 4) {
                         switch(opcionGrafos) {
                             case 1 -> { //Leer grafo de archivo
                                 System.out.println("Ingrese el nombre del archivo con el grafo: ");
-                                String archivo = sc.next();
+                                String archivo = sc.next(), texto ="";
                                 try {
                                     //Lee archivo
                                     BufferedReader bf = new BufferedReader(new FileReader("./Carpeta Grafos/" + archivo + ".txt"));
-                                    String linea; 
-                                    int iteracion = 0, size = 0, fila = 0;
-                                    Vertice matriz[][] = null;
-                                    while((linea = bf.readLine()) != null) {
-                                        if(iteracion++ == 0) {
-                                            size = Integer.parseInt(linea);
-                                            matriz = new Vertice[size][size];
-                                        } else {
-                                            String arreglo[] = linea.split(" ");
-                                            Vertice arregloVertices[] = new Vertice[size];
-                                            for(int i = 0;i < arreglo.length; i++) {
-                                                arregloVertices[i] = new Vertice(Integer.parseInt(arreglo[i]));
+                                    String bfRead; 
+                                    while((bfRead = bf.readLine()) != null) {
+                                        texto += bfRead;
                                     }
-                                            matriz[fila++] = arregloVertices;
-                                        }
-                                    }
-                                    grafo.setMatrizAdyacencia(matriz);
+                                    
                                 } catch (IOException e) {
                                     System.out.println("Error: " + e.getMessage());
                                     e.printStackTrace();
@@ -124,7 +111,7 @@ public class main {
                                 break;
                             }
                             case 2 -> { //Prim
-                                GrafoPrim prim = (GrafoPrim)grafo;
+                                GrafoPrim prim = new GrafoPrim(5);
                                 //prim.automatic_Fill();
                                 prim.algoritmoPrim();
                                 break;
