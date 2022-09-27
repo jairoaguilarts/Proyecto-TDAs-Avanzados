@@ -40,14 +40,14 @@ public class GrafoFloyd extends TDAGrafo{
             }
         }
         
-        System.out.println("Matriz Adyacencia");
+        System.out.println("Matriz Adyacencia: ");
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
                 System.out.print(matrizAdyacencia[i][j].getValor() + " ");
             }
             System.out.println();
         }
-        System.out.println("Matriz Costo Minimo");
+        System.out.println("Matriz Costo Minimo: ");
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
                 System.out.print(matrizCostos[i][j] + " ");
